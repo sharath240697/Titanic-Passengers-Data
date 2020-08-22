@@ -57,16 +57,8 @@ const Menu = () => {
   return(
       <Container className={classes.container}>
       <Grid container className={classes.grid}>
-          <Grid item xs={2}>
-              <Tabs orientation="vertical"
-                    aria-label="menu bar"
-                    value={value}
-                    onChange={handleChange}
-                    className={classes.tabs}>
-                  <Tab icon={<AssignmentIcon />} aria-label="assignment" index={1} value={1}/>
-              </Tabs>
-          </Grid>
-          <Grid item xs={10}>
+         
+          <Grid item x={10}>
               <TabPanel value={value} index={1} className={classes.tabPanel}>
                   <Task />
               </TabPanel>
