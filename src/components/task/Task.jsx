@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import {Card, CardContent, Typography} from "@material-ui/core";
 
-import ExampleTable from "./ExampleTable";
-
+import Table from "./Table";
+import * as util from "../util/util"
 // import data from "../../data";
 
 // Use the following url to access the data
@@ -17,12 +17,29 @@ import ExampleTable from "./ExampleTable";
 
 class Task extends Component {
 
+    componentDidMount() {
+       fetch(util.dataURL) 
+          .then(response => response.json())
+          .then(json => {
+            this.setState({ PassengerData: util.formatData(json) });
+          }); 
+
+          console.log(this.state)
+      }
+
     render() {
+        console.log(this.state)
         return(
+          
+            <div>
+                 {   this.state === null && <h4>Loading...</h4> }
+                {
+                    this.state != null &&
             <div>
                 <Card>
                     <CardContent>
                         <Typography>
+                          
                             <b>Fetch the following URL in the comments to access the data. </b>
                         </Typography>
 
@@ -36,9 +53,10 @@ class Task extends Component {
                         </Typography>
                     </CardContent>
                 </Card>
-                { /* Replace this example table with your solution below. 
-                You are more than welcome to organise your code into different files where appropriate. */}
-                <ExampleTable />
+                
+               <Table passengerData= {this.state.PassengerData}/>
+               </div>
+                }
             </div>
         );
     }

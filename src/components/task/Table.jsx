@@ -28,10 +28,15 @@ const exampleData = [
     },
 ];
 
-// get table headings
-const tableHeadings = Object.keys(exampleData[0]);
 
-const ExampleTable = () => (
+
+const ExampleTable = ({passengerData}) => {
+   
+    // get table headings
+    console.log(passengerData)
+const tableHeadings = Object.keys(passengerData[0]);
+
+    return  (
     <Card>
         <CardContent>
             <Typography>Example Table (how many cats and dogs we saw each day)</Typography>
@@ -44,7 +49,7 @@ const ExampleTable = () => (
 
                 <TableBody>
                 {
-                    exampleData.map((data, ind) => <TableRow key={`exampleRow_${ind}`}>
+                    passengerData.map((data, ind) => <TableRow key={`exampleRow_${ind}`}>
                         {Object.values(data).map((d, i) => <TableCell key={`exampleCell_${i}`}>{d}</TableCell>)}
                         </TableRow>)
                 }
@@ -53,5 +58,5 @@ const ExampleTable = () => (
         </CardContent>
     </Card>
 );
-
+            }
 export default ExampleTable;
