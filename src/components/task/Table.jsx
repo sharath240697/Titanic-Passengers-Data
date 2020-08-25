@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
     Table,
     TableCell,
@@ -8,55 +8,49 @@ import {
 
     Card, CardContent, Typography
 } from "@material-ui/core";
-
-// some random example data of number of cats and dogs seen on each day
-const exampleData = [
-    {
-        date: "01/04/2019",
-        cats: 4,
-        dogs: 5,
-    },
-    {
-        date: "01/05/2019",
-        cats: 10,
-        dogs: 2,
-    },
-    {
-        date: "01/06/2019",
-        cats: 7,
-        dogs: 6,
-    },
-];
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 
 
-
-const ExampleTable = ({passengerData}) => {
+class DataTable extends Component{
    
-    // get table headings
-    console.log(passengerData)
-const tableHeadings = Object.keys(passengerData[0]);
+    constructor(props) {
+        super(props);
+    }
+  
+    render()  {
+        const {passengerData } = this.props;
 
-    return  (
-    <Card>
-        <CardContent>
-            <Typography>Example Table (how many cats and dogs we saw each day)</Typography>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                {tableHeadings.map((key, i) => <TableCell key={`heading_${i}`}>{key}</TableCell>)}
-                    </TableRow>
-                </TableHead>
+        return  (
+            <Card>
+                <CardContent>
+                    <Typography>Example Table (how many cats and dogs we saw each day)</Typography>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                            {Object.keys(passengerData[0]).map((key, i) => <TableCell key={`heading_${i}`}>{key}</TableCell>)}
+                            </TableRow>
+                        </TableHead>
+        
+                        <TableBody>
+                        {
+                           passengerData.length !==0 && passengerData.map((record, ind) => <TableRow key={`exampleRow_${ind}`}>
+                                {record!== null && Object.values(record).map((data, i) => <TableCell key={`exampleCell_${i}`}>{data===undefined? '-':data}</TableCell>)}
+                                </TableRow>)
+                        }
+                        </TableBody>
+                    </Table>
+                </CardContent>
+            </Card>
+        );
+    }    
+ }
 
-                <TableBody>
-                {
-                    passengerData.map((data, ind) => <TableRow key={`exampleRow_${ind}`}>
-                        {Object.values(data).map((d, i) => <TableCell key={`exampleCell_${i}`}>{d}</TableCell>)}
-                        </TableRow>)
-                }
-                </TableBody>
-            </Table>
-        </CardContent>
-    </Card>
-);
-            }
-export default ExampleTable;
+
+
+export default DataTable;
+
+
+
