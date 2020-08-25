@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import {Card, CardContent, Typography} from "@material-ui/core";
+import {Card, CardContent, Typography, makeStyles} from "@material-ui/core";
 
-import Table from "./Table";
+import DataTable from "./Table";
 import * as util from "../util/util"
 // import data from "../../data";
 
@@ -29,6 +29,7 @@ class Task extends Component {
 
     render() {
         console.log(this.state)
+       
         return(
           
             <div>
@@ -54,13 +55,15 @@ class Task extends Component {
                     </CardContent>
                 </Card>
                 
-               <Table passengerData= {this.state.PassengerData}/>
+               <DataTable passengerData= {this.state.PassengerData}/>
                </div>
                 }
             </div>
         );
     }
 };
+
+
 
 export default Task;
 
