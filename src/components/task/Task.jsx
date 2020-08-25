@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Card, CardContent, Typography, makeStyles} from "@material-ui/core";
 
-import DataTable from "./Table";
+import DataTable from "./DataTable";
 import * as util from "../util/util"
 // import data from "../../data";
 
@@ -55,7 +55,8 @@ class Task extends Component {
                     </CardContent>
                 </Card>
                 
-               <DataTable passengerData= {this.state.PassengerData}/>
+               <DataTable passengerData= {this.state.PassengerData} 
+                    filterableFields ={util.filterableFields}/>
                </div>
                 }
             </div>
