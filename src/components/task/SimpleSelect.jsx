@@ -21,9 +21,12 @@ export default function SimpleSelect(props) {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
-    console.log(props)
+   
+    //console.log(props)
     props.handleFilterOptionChange(props.filterField,event.target.value)
+    setAge(event.target.value)
+   
+    
   };
 
   return (
