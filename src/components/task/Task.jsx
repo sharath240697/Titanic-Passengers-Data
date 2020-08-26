@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import {Card, CardContent, Typography, makeStyles} from "@material-ui/core";
-
+import { withRouter, BrowserRouter,useParams, Switch, Route, Redirect } from 'react-router-dom';
 import DataTable from "./DataTable";
+import NavBar from "./NavBar"
+import Charts from './Charts'
 import * as util from "../util/util"
 // import data from "../../data";
 
@@ -27,6 +29,12 @@ class Task extends Component {
           console.log(this.state)
       }
 
+      handleNavBarClick(path)
+      {
+          console.log('handle log')
+        this.props.history.push(`/${path}`);
+      }
+
     render() {
         console.log(this.state)
        
@@ -39,24 +47,21 @@ class Task extends Component {
             <div>
                 <Card>
                     <CardContent>
-                        <Typography>
-                          
-                            <b>Fetch the following URL in the comments to access the data. </b>
-                        </Typography>
-
-                        <Typography>
-                            If you have trouble with doing this, you can access some data through by importing the "data".
-                        </Typography>
-
-                        <Typography>
-                            An example table with some random data has been provided.
-                            Replace the example table with your solution below.
-                        </Typography>
+                       <NavBar title={util.navBarTitle} onClick={path => this.handleNavBarClick(path)}></NavBar>
                     </CardContent>
                 </Card>
-                
-               <DataTable passengerData= {this.state.PassengerData} 
-                    filterableFields ={util.filterableFields}/>
+               
+                <Switch>   
+                    <Route  path="/data">
+                            <DataTable passengerData= {this.state.PassengerData} 
+                                         filterableFields ={util.filterableFields}
+                                        filteringFunction = {util.filterFunction}/>
+                    </Route>  
+                    <Route path="/charts">
+                        <Charts></Charts>
+                    </Route>           
+                </Switch>
+                  
                </div>
                 }
             </div>
@@ -66,5 +71,5 @@ class Task extends Component {
 
 
 
-export default Task;
+export default (withRouter(Task));
 
