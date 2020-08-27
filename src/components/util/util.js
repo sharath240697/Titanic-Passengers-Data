@@ -32,7 +32,7 @@ export function formatData(passengerRecords) {
     let passengerData = []
     passengerData = passengerRecords.records.map(record => record.fields)
     passengerData = passengerData.map(record => {
-        
+        //filters the record of passenger who did not pay for a fare
         if(record.fare !== 0)
         {
           let  newRecord = { [fieldLabels.name] : record.name, 
