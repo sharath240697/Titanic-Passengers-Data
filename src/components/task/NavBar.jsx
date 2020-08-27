@@ -21,7 +21,7 @@ export default function NavBar(props) {
   const classes = useStyles();
 
   function handleOnClick(event) {
-      console.log(props)
+    //  console.log(props)
       props.onClick(event)
   }
 

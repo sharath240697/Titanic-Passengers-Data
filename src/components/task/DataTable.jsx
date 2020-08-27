@@ -6,41 +6,37 @@ import {
     TableBody,
     TableHead,
     makeStyles,
-    Card, CardContent, Typography
+    Card, CardContent
 } from "@material-ui/core";
 import SimpleSelect from './SimpleSelect'
 
 
 class DataTable extends Component{
-   
-    constructor(props) {
-        super(props);
-    }
   
     componentDidMount() {
        // Object.keys(this.props.filterableFields).map(option => this.setState({filterOptions: {...this.state.filterOptions,[option]: [option]}}))
        const filterByOptions = {};
        Object.keys(this.props.filterableFields).map(option => filterByOptions[option]=option )
        this.setState({filterByOptions: filterByOptions})
-    console.log(this.state)
+   // console.log(this.state)
        }
 
 handleFilterOptionChange(filterField,filterOption)
 {
-    console.log('hello')
+  //  console.log('hello')
    this.setState({filterByOptions: {...this.state.filterByOptions,[filterField]:filterOption}})
 }
 
     render()  {
         const {passengerData, filterableFields} = this.props;
      let filteredRecords = passengerData;
-     console.log(this.state)
-     console.log(passengerData)
-     console.log(filteredRecords)
+   //  console.log(this.state)
+   //  console.log(passengerData)
+   //  console.log(filteredRecords)
      if(this.state!==null && filteredRecords!==null)
          filteredRecords = this.props.filteringFunction(filteredRecords,this.state.filterByOptions)
         return this.state!== null? <SimpleTable filteredRecords = {filteredRecords}
-            filterableFields={filterableFields}
+        passengerData = {passengerData} filterableFields={filterableFields}
             handleFilterOptionChange = {(filterField,filterOption) => this.handleFilterOptionChange(filterField,filterOption)}
         ></SimpleTable>: <h4>Loading..</h4>
         
@@ -49,7 +45,7 @@ handleFilterOptionChange(filterField,filterOption)
 
  const useStyles = makeStyles({
     table: {
-        width: '100%'
+        width: '100%',
     },
   });
 
@@ -58,10 +54,10 @@ function SimpleTable(props) {
     return  (
          <Card>
             <CardContent>
-                <Table className={classes.table} aria-label="simple table" >
+                <Table  className={classes.table} aria-label="simple table" >
                     <TableHead>
                         <TableRow>
-                        {Object.keys(props.filteredRecords[0]).map((key, i) => 
+                        {props.passengerData[0]!==undefined && Object.keys(props.passengerData[0]).map((key, i) => 
                       
                                 <TableCell key={`heading_${i}`}>
                                     { 
