@@ -34,6 +34,8 @@ npm start
 
 ## Personal Note
 
-The task could've been completed in much efficient manner, for example UI Design, Chartings etc., but due to time constraints it was bit tough managing University workload (Projects, tests & assignments), AWS exam preparation and this  task. I believe I've given my best within this time constraint but could do much better. 
+The task could've been completed in much efficient manner, for example UI Design, Dynamic chartings instead of static with hard coded names etc., 
+but due to time constraints it was bit tough managing University workload (Projects, tests & assignments), AWS exam preparation and this  task. 
+I believe I've given my best within this time constraint but could do much better. 
 
 Thank you very much for this learning oppurtunity!
