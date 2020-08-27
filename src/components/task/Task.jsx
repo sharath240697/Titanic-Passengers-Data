@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {Card, CardContent, Typography, makeStyles} from "@material-ui/core";
-import { withRouter, BrowserRouter,useParams, Switch, Route, Redirect } from 'react-router-dom';
+import {Card, CardContent} from "@material-ui/core";
+import { withRouter,  Switch, Route } from 'react-router-dom';
 import DataTable from "./DataTable";
 import NavBar from "./NavBar"
 import Charts from './Charts'
@@ -26,17 +26,16 @@ class Task extends Component {
             this.setState({ PassengerData: util.formatData(json) });
           }); 
 
-          console.log(this.state)
+        //  console.log(this.state)
       }
 
       handleNavBarClick(path)
       {
-          console.log('handle log')
         this.props.history.push(`/${path}`);
       }
 
     render() {
-        console.log(this.state)
+       // console.log(this.state)
        
         return(
           
@@ -52,13 +51,18 @@ class Task extends Component {
                 </Card>
                
                 <Switch>   
-                    <Route  path="/data">
+                    <Route  path= {util.pathForData}>
                             <DataTable passengerData= {this.state.PassengerData} 
                                          filterableFields ={util.filterableFields}
                                         filteringFunction = {util.filterFunction}/>
                     </Route>  
-                    <Route path="/charts">
-                        <Charts></Charts>
+                    <Route path={util.pathForChart}>
+                        <Charts passengerData= {this.state.PassengerData} ></Charts>
+                    </Route>  
+                    <Route  path="/">
+                            <DataTable passengerData= {this.state.PassengerData} 
+                                         filterableFields ={util.filterableFields}
+                                        filteringFunction = {util.filterFunction}/>
                     </Route>           
                 </Switch>
                   

@@ -20,7 +20,9 @@ export const filterableFields = { [fieldLabels.embarked]: [embarkedPlaces.C,emba
                                   [fieldLabels.fare]:  [ticketPriceClass.cheap,ticketPriceClass.regular,ticketPriceClass.expensive,ticketPriceClass.none] }
 
 //Navbar parameters
-export const navBarTitle = 'Titanic Passenges Data'
+export const navBarTitle = 'Titanic Passengers Data'
+export const pathForData = '/data'
+export const pathForChart = '/charts'
 /*Configuration Ends */
 
 
@@ -71,7 +73,7 @@ function reFormatData(record, newRecord)
 
 export function filterFunction(datarecords,filterByOptions)
 {
-    console.log(filterByOptions)
+    //console.log(filterByOptions)
     let filteredRecords = datarecords;  
     (Object.keys(filterByOptions).map(option => {
         if(filterByOptions[option]!==option && filterByOptions[option]!=='None')
@@ -103,8 +105,8 @@ export function filterFunction(datarecords,filterByOptions)
                     })
                 }
         }     
-        
+        return false;
     }))
-    console.log(filteredRecords)
+   // console.log(filteredRecords)
     return filteredRecords;  
 }

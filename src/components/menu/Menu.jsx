@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 
 import Container from "@material-ui/core/Container";
@@ -8,9 +8,6 @@ import Box from "@material-ui/core/Box";
 
 // tab material
 import Task from "../task/Task";
-
-// icons
-import AssignmentIcon from "@material-ui/icons/Assignment";
 
 // use styles from material-ui
 const useStyles = makeStyles(theme => ({
@@ -49,20 +46,17 @@ function TabPanel(props) {
 const Menu = () => {
     const classes = useStyles();
 
-    const [ value, setValue] = useState(1);
-    const handleChange = (event, newValue) => setValue(newValue);
-
   return(
     <Router>
     <Container className={classes.container}>
-    <Grid container className={classes.grid}>
+    
       
         <Grid item x={10}>
-            <TabPanel value={value} index={1} className={classes.tabPanel}>
+           
+            <TabPanel value={1} index={1} className={classes.tabPanel}>
                 <Task />
             </TabPanel>
         </Grid>
-    </Grid>
     </Container>
     </Router>
   )
