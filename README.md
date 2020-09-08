@@ -29,7 +29,6 @@ Many learning materials were referenced during the process, hence all the credit
 - JavaScript - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 - Stack Overflow
 - GitHub
-- Codecademy - https://www.codecademy.com/
 - Underscore.js - https://underscorejs.org/
 
 ## Application configuration
